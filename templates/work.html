@@ -1,0 +1,102 @@
+<!--
+  作品页模板
+  用法：复制到 portfolio/ 根目录，重命名为你的作品 slug.html，
+  然后把下面的 ../ 路径全部去掉（例如 ../style.css 改成 style.css）。
+  这个文件本身不会被目录链接；不要在发布时删掉 templates 文件夹。
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>[作品标题] · 周成宇作品集</title>
+<meta name="description" content="[一句话说明这件作品。]">
+<meta name="theme-color" content="#f7f7f5">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="page-work" data-page="work">
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="nav">
+  <div class="shell nav-inner">
+    <a class="brand" href="../index.html" aria-label="周成宇作品集首页">
+      <span class="brand-mark" aria-hidden="true">周</span>
+      <span class="brand-text">周成宇 / 数据与文字</span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="../works.html">目录</a>
+      <a href="../index.html#works">作品</a>
+      <a href="../index.html#about">关于</a>
+      <a href="../index.html#contact">联系</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="work-hero">
+    <div class="shell">
+      <a class="text-link" href="../works.html">← 返回目录</a>
+      <p class="eyebrow" style="margin-top:32px">[年份] · [分类] · [作品形态]</p>
+      <h1>[作品标题]</h1>
+      <p class="work-deck">[一句话说明这件作品在做什么、为什么值得读。]</p>
+    </div>
+  </section>
+
+  <article class="work-article">
+    <dl class="article-meta">
+      <div><dt>时间</dt><dd>[年份]</dd></div>
+      <div><dt>类型</dt><dd>[作品形态]</dd></div>
+      <div><dt>我负责</dt><dd>[采访 / 写作 / 数据 / 拍摄 / 编辑]</dd></div>
+      <div><dt>工具</dt><dd>[使用的工具]</dd></div>
+    </dl>
+
+    <p>[开场：这件作品从什么问题开始。]</p>
+
+    <h2>过程</h2>
+    <p>[怎么找到材料、怎么核对、遇到了什么困难。]</p>
+
+    <h2>发现</h2>
+    <p>[作品呈现了什么，读者应该带走什么。]</p>
+
+    <!--
+      访谈类作品可以保留下面的 Q&A 区块；
+      数据分析类作品可以保留「方法」区块；
+      其他类型不需要的区块直接删掉。
+    -->
+    <h2>对话</h2>
+    <dl class="qna">
+      <dt>[问题]</dt>
+      <dd>[回答]</dd>
+      <dt>[问题]</dt>
+      <dd>[回答]</dd>
+    </dl>
+
+    <h2>方法</h2>
+    <div class="method">
+      <p>[数据来源、样本、时间范围、核对方式；没有就删掉这一节。]</p>
+    </div>
+
+    <section class="work-sources">
+      <h2>来源</h2>
+      <ul>
+        <li>[来源 1]</li>
+        <li>[来源 2]</li>
+      </ul>
+    </section>
+
+    <p style="margin-top:40px"><a class="text-link" href="../works.html">← 返回目录</a></p>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <span>© 2026 周成宇</span>
+    <span><a href="../works.html">目录</a> · <a href="../index.html#contact">联系</a></span>
+  </div>
+</footer>
+
+<script src="../works.js"></script>
+<script src="../site.js"></script>
+</body>
+</html>

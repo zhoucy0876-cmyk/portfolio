@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>厦门：人口第三，城镇化率第一 · 周成宇</title>
+<meta name="description" content="一件数据作品的核对过程：同一座城市，换一把尺子，排名从第三变成第一，再变成第二。">
+<meta name="theme-color" content="#f7f7f5">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="page-case" data-page="case">
+<a class="skip-link" href="#main">跳到正文</a>
+<div class="progress" aria-hidden="true"><span id="read-progress"></span></div>
+
+<nav class="chapter-rail" aria-label="章节导航">
+  <a href="#chapter-1" data-chapter="chapter-1"><span>01</span>三种尺子</a>
+  <a href="#chapter-2" data-chapter="chapter-2"><span>02</span>GDP 反转</a>
+  <a href="#chapter-3" data-chapter="chapter-3"><span>03</span>三处错误</a>
+  <a href="#chapter-4" data-chapter="chapter-4"><span>04</span>数据缺口</a>
+  <a href="#chapter-5" data-chapter="chapter-5"><span>05</span>再看这个题</a>
+</nav>
+
+<header class="nav">
+  <div class="shell nav-inner">
+    <a class="brand" href="index.html" aria-label="周成宇作品集首页">
+      <span class="brand-mark" aria-hidden="true">周</span>
+      <span class="brand-text">周成宇 / 数据与文字</span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="works.html">目录</a>
+      <a href="index.html#works">作品</a>
+      <a href="index.html#about">关于</a>
+      <a href="index.html#contact">联系</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="case-hero">
+    <div class="shell case-hero-inner">
+      <a class="back-link" href="works.html">← 返回目录</a>
+      <p class="eyebrow eyebrow--dark">作品说明 / 数据分析</p>
+      <h1 class="case-title">厦门：人口第三，<br>城镇化率第一</h1>
+      <p class="case-deck">同一座城市，换一把尺子，排名就从第三变成第一，再变成第二。</p>
+
+      <dl class="case-meta">
+        <div><dt>时间</dt><dd>2026</dd></div>
+        <div><dt>类型</dt><dd>数据分析 / 数据可视化</dd></div>
+        <div><dt>我负责</dt><dd>数据查找、逐格转录、交叉校验、文字</dd></div>
+        <div><dt>工具</dt><dd>Excel / CSV、ECharts、JavaScript、Python</dd></div>
+        <div><dt>成果</dt><dd><a href="xiamen-city-data/web/index.html">交互数据页</a></dd></div>
+      </dl>
+
+      <a class="scroll-cue" href="#chapter-1">向下阅读 <span aria-hidden="true">↓</span></a>
+    </div>
+  </section>
+
+  <section class="chapter chapter-dark" id="chapter-1" data-chapter="chapter-1">
+    <div class="shell chapter-layout">
+      <div class="sticky-chart">
+        <div class="chart-head">
+          <span class="chart-kicker">2024 · 福建九市</span>
+          <strong id="metric-label">人口</strong>
+        </div>
+
+        <div class="metric-tabs" role="group" aria-label="切换指标">
+          <button type="button" data-metric-tab="population" aria-pressed="true">人口</button>
+          <button type="button" data-metric-tab="urbanization" aria-pressed="false">城镇化率</button>
+          <button type="button" data-metric-tab="gdpPerCapita" aria-pressed="false">人均 GDP</button>
+        </div>
+
+        <div class="bar-chart" id="bar-chart" role="img" aria-label="2024 年福建九市人口排名，厦门第三">
+          <noscript>
+            <p>图表需要 JavaScript。关键数据：厦门人口 535 万，城镇化率 91.0%，人均 GDP 160,888 元。</p>
+          </noscript>
+        </div>
+        <p class="chart-caption" id="bar-caption">2024 年末常住人口，单位：万人。数据来自福建统计年鉴。</p>
+        <table class="sr-only" id="bar-table"></table>
+      </div>
+
+      <div class="steps" id="metric-steps">
+        <article class="step is-active" data-metric="population">
+          <span class="step-index">01</span>
+          <h2>人口：第三</h2>
+          <p>2024 年末，厦门常住人口 535 万。泉州 891 万、福州 850 万，厦门排在第三。</p>
+        </article>
+        <article class="step" data-metric="urbanization">
+          <span class="step-index">02</span>
+          <h2>城镇化率：第一</h2>
+          <p>换一把尺子，91.0% 的厦门人住在城镇，比第二名福州高 16.7 个百分点；厦门是全省唯一超过 90% 的城市。</p>
+        </article>
+        <article class="step" data-metric="gdpPerCapita">
+          <span class="step-index">03</span>
+          <h2>人均 GDP：第二</h2>
+          <p>再换一把尺子，厦门人均 GDP 160,888 元，福州 167,787 元。不是第一，是第二。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter chapter-dark" id="chapter-2" data-chapter="chapter-2">
+    <div class="shell chapter-layout">
+      <div class="sticky-chart">
+        <div class="chart-head">
+          <span class="chart-kicker">2022–2024 · 人均 GDP</span>
+          <strong>厦门 vs 福州</strong>
+        </div>
+        <div class="line-chart-wrap">
+          <svg id="line-chart" class="line-chart" viewBox="0 0 720 430" role="img" aria-label="2022 至 2024 年厦门与福州人均 GDP 折线图：2022 年厦门略高，2023 年起福州超过厦门"></svg>
+          <p class="chart-fallback" id="line-fallback">图表数据未加载。关键数据：2022 年厦门 147,387 元，福州 145,936 元；2024 年厦门 160,888 元，福州 167,787 元。</p>
+        </div>
+        <p class="chart-caption">2025 年三市人均 GDP 未发布，折线停在 2024 年。单位：元。</p>
+        <table class="sr-only" id="line-table"></table>
+      </div>
+
+      <div class="steps" id="gdp-steps">
+        <article class="step is-active" data-year="2022">
+          <span class="step-index">01</span>
+          <h2>2022：厦门略高</h2>
+          <p>厦门 147,387 元，福州 145,936 元，相差 1,451 元。那一年厦门是全省第一。</p>
+        </article>
+        <article class="step" data-year="2023">
+          <span class="step-index">02</span>
+          <h2>2023：福州反超</h2>
+          <p>福州 152,846 元，厦门 151,697 元。差距只有 1,149 元，但方向变了。</p>
+        </article>
+        <article class="step" data-year="2024">
+          <span class="step-index">03</span>
+          <h2>2024：差距拉大</h2>
+          <p>福州 167,787 元，厦门 160,888 元，相差 6,899 元。厦门只在 2022 年拿过第一。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter chapter-paper" id="chapter-3" data-chapter="chapter-3">
+    <div class="case-article">
+      <p class="section-number">03</p>
+      <h2>校验抓出了三处错误</h2>
+      <p>数据录入完之后，脚本做了六项校验：城镇人口加乡村人口等于常住人口；城镇化率等于城镇人口除以常住人口；人均 GDP 约等于 GDP 除以年末人口；三次产业合计等于 GDP；城镇收入高于农村收入；以及九市 GDP 合计与全省、厦门六区 GDP 合计与全市的交叉核对。</p>
+      <p>第一版的人均 GDP 校验容差定在 1.5%。三处转录错误造成的偏差都在 0.7% 以内，全部漏了过去。后来把容差收紧到 0.7%，又新增「九市 GDP 合计 ≈ 全省」这一条，问题才露出来。</p>
+
+      <table class="error-table">
+        <thead>
+          <tr><th scope="col">项目</th><th scope="col">原值</th><th scope="col">正确值</th></tr>
+        </thead>
+        <tbody>
+          <tr data-reveal><td>全省 GDP（亿元）</td><td class="old">57,661.02</td><td class="new">57,761.02</td></tr>
+          <tr data-reveal><td>福州 GDP（亿元）</td><td class="old">14,326.76</td><td class="new">14,236.76</td></tr>
+          <tr data-reveal><td>福州人均 GDP（元）</td><td class="old">157,787</td><td class="new">167,787</td></tr>
+        </tbody>
+      </table>
+
+      <blockquote class="pullquote">容差定得比错误幅度还宽，校验就等于没有。</blockquote>
+
+      <p>第三处错误改变了结论。修正前，页面写的是「厦门 2024 年夺回人均 GDP 第一」；修正后，福州是 167,787 元，厦门是 160,888 元。现在页面上的说法是：厦门只在 2022 年拿过第一，2023 年起低于福州。</p>
+    </div>
+  </section>
+
+  <section class="chapter chapter-paper chapter-paper--tint" id="chapter-4" data-chapter="chapter-4">
+    <div class="case-article">
+      <p class="section-number">04</p>
+      <h2>缺口也属于结果</h2>
+      <p>还有一处不是我的转录错误：2023 年厦门六区 GDP 合计比全市少 20.01 亿元。放大重读年鉴原图后，六个区的数字都能对上，差额确实存在于原文。页面按原样呈现，没有替它补齐。</p>
+      <p>2025 年的数据也有缺口。缺口不是 0，也不该用推算值填上。</p>
+
+      <div class="matrix-wrap" data-reveal>
+        <table class="matrix">
+          <caption>2025 年三市数据可用性</caption>
+          <thead>
+            <tr><th scope="col">城市</th><th scope="col">常住人口</th><th scope="col">城镇化率</th><th scope="col">人均 GDP</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">厦门</th><td>536.50 万</td><td>91.31%</td><td><span class="missing">未发布</span></td></tr>
+            <tr><th scope="row">福州</th><td>852.10 万</td><td>74.63%</td><td><span class="missing">未发布</span></td></tr>
+            <tr><th scope="row">泉州</th><td><span class="missing">未发布</span></td><td><span class="missing">未发布</span></td><td><span class="missing">未发布</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>泉州公报只公布户籍人口，没有常住人口；厦门、福州、泉州三市的人均 GDP 也没有印在 2025 年公报里。没有用「GDP ÷ 年末人口」去补，因为年鉴口径用的是年平均人口，混进同一列会造成口径不一致。对读者来说，留下空白比给出一个看似精确的数更诚实。</p>
+    </div>
+  </section>
+
+  <section class="chapter chapter-paper" id="chapter-5" data-chapter="chapter-5">
+    <div class="case-article">
+      <p class="section-number">05</p>
+      <h2>现在再看这个题</h2>
+      <p>2024 年人口第三、城镇化率第一的格局没有变；2025 年厦门的城镇化率升到 91.31%，在已发布数据的城市中仍排第一。人均 GDP 仍然低于福州。</p>
+      <p>变化的是我对「做完」的理解：把图做出来只是开始，能把每个数字的来源、口径和缺口说清楚，才算真正完成。这件作品也让我确定接下来要补的两件事：采访和写作。数据能告诉我城市发生了什么，但要解释它为什么发生，还得回到人那里。</p>
+
+      <div class="case-cta">
+        <a class="button-primary" href="xiamen-city-data/web/index.html">打开交互数据页 <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="works.html">← 返回目录</a>
+      </div>
+
+      <section class="case-sources" aria-labelledby="sources-title">
+        <h3 id="sources-title">原始材料</h3>
+        <ul>
+          <li><a href="https://tjj.fujian.gov.cn/tongjinianjian/dz2025/zk/indexch.htm" target="_blank" rel="noopener">《福建统计年鉴 2025》</a>（2024 年数据）</li>
+          <li><a href="https://tjj.fujian.gov.cn/tongjinianjian/dz2024/indexch.htm" target="_blank" rel="noopener">《福建统计年鉴 2024》</a>（2023 年数据）</li>
+          <li><a href="https://tjj.fujian.gov.cn/tongjinianjian/dz2023/indexch.htm" target="_blank" rel="noopener">《福建统计年鉴 2023》</a>（2022 年数据）</li>
+          <li>2025 年数据来自福建九个设区市各自的《国民经济和社会发展统计公报》。</li>
+        </ul>
+        <p class="source-note">完整的来源、口径说明、数据缺口与修订记录，见数据页页脚。</p>
+      </section>
+
+      <figure class="appendix-figure">
+        <img src="assets/xiamen-chart.png" alt="原始数据页中的福建设区市城镇化率对比图，厦门以 91.3% 居首" loading="lazy" decoding="async">
+        <figcaption>原始页面中的 2025 年城镇化率对比图。</figcaption>
+      </figure>
+
+      <footer class="case-footer">写于 2026 年 10 月 · 周成宇</footer>
+    </div>
+  </section>
+</main>
+
+<script src="works.js"></script>
+<script src="site.js"></script>
+<script src="xiamen-city-data/web/data.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  const DATA = window.DATA;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const metricOrder = ['population', 'urbanization', 'gdpPerCapita'];
+  const metrics = {
+    population: {
+      label: '人口',
+      caption: '2024 年末常住人口，单位：万人。数据来自福建统计年鉴。',
+      format: (value) => value.toFixed(1).replace('.0', '') + ' 万',
+    },
+    urbanization: {
+      label: '城镇化率',
+      caption: '2024 年常住人口城镇化率，单位：%。厦门比第二名福州高 16.7 个百分点。',
+      format: (value) => value.toFixed(1) + '%',
+    },
+    gdpPerCapita: {
+      label: '人均 GDP',
+      caption: '2024 年人均地区生产总值，单位：元。厦门排在福州之后。',
+      format: (value) => value.toLocaleString('en-US'),
+    },
+  };
+
+  const barChart = document.getElementById('bar-chart');
+  const barCaption = document.getElementById('bar-caption');
+  const metricLabel = document.getElementById('metric-label');
+  const barTable = document.getElementById('bar-table');
+  const lineChart = document.getElementById('line-chart');
+  const lineTable = document.getElementById('line-table');
+  const metricTabs = [...document.querySelectorAll('[data-metric-tab]')];
+  const metricSteps = [...document.querySelectorAll('[data-metric]')];
+  const yearSteps = [...document.querySelectorAll('[data-year]')];
+  let currentMetric = 'population';
+
+  function byYear(year, region) {
+    if (!DATA || !Array.isArray(DATA.cities)) return null;
+    return DATA.cities.find((row) => row.year === year && row.region === region) || null;
+  }
+
+  function citiesFor(year) {
+    if (!DATA || !Array.isArray(DATA.cities)) return [];
+    return DATA.cities.filter((row) => row.year === year && row.region !== '全省');
+  }
+
+  function activeMetric() {
+    return metrics[currentMetric] || metrics.population;
+  }
+
+  function renderBars(metricKey) {
+    if (!barChart) return;
+
+    currentMetric = metricKey;
+    const metric = activeMetric();
+    if (metricLabel) metricLabel.textContent = metric.label;
+    if (barCaption) barCaption.textContent = metric.caption;
+
+    metricTabs.forEach((button) => {
+      button.setAttribute('aria-pressed', String(button.dataset.metricTab === metricKey));
+    });
+
+    metricSteps.forEach((step) => {
+      step.classList.toggle('is-active', step.dataset.metric === metricKey);
+    });
+
+    if (!DATA) {
+      barChart.innerHTML = '<p class="chart-fallback">图表数据未加载。关键数据：厦门人口 535 万，城镇化率 91.0%，人均 GDP 160,888 元。</p>';
+      if (barTable) barTable.innerHTML = '';
+      return;
+    }
+
+    const rows = citiesFor(2024)
+      .filter((row) => row[metricKey] !== null && row[metricKey] !== undefined)
+      .sort((a, b) => b[metricKey] - a[metricKey]);
+
+    if (!rows.length) {
+      barChart.innerHTML = '<p class="chart-fallback">这个指标暂时没有数据。</p>';
+      return;
+    }
+
+    const max = Math.max(...rows.map((row) => row[metricKey]));
+    barChart.innerHTML = '';
+
+    rows.forEach((row, index) => {
+      const item = document.createElement('div');
+      item.className = 'bar-row' + (row.region === '厦门' ? ' is-active' : '');
+      item.style.order = String(index);
+
+      const city = document.createElement('span');
+      city.className = 'bar-city';
+      city.textContent = row.region;
+
+      const track = document.createElement('span');
+      track.className = 'bar-track';
+      const fill = document.createElement('span');
+      fill.className = 'bar-fill';
+      const targetWidth = ((row[metricKey] / max) * 100).toFixed(2) + '%';
+      fill.style.setProperty('--w', reduceMotion ? targetWidth : '0%');
+      track.appendChild(fill);
+
+      const value = document.createElement('span');
+      value.className = 'bar-value';
+      value.textContent = metric.format(row[metricKey]);
+
+      item.append(city, track, value);
+      barChart.appendChild(item);
+
+      if (!reduceMotion) {
+        window.requestAnimationFrame(() => fill.style.setProperty('--w', targetWidth));
+      }
+    });
+
+    const xiamenRow = byYear(2024, '厦门');
+    if (xiamenRow) {
+      barChart.setAttribute('aria-label', '2024 年福建九市' + metric.label + '排名，厦门' + metric.format(xiamenRow[metricKey]));
+    }
+    renderBarTable(metricKey, rows);
+  }
+
+  function renderBarTable(metricKey, rows) {
+    if (!barTable) return;
+    const metric = metrics[metricKey];
+    barTable.innerHTML = '';
+    const caption = document.createElement('caption');
+    caption.textContent = '2024 年福建九市' + metric.label;
+    barTable.appendChild(caption);
+
+    const thead = document.createElement('thead');
+    const headRow = document.createElement('tr');
+    ['城市', metric.label, '厦门排名'].forEach((label) => {
+      const th = document.createElement('th');
+      th.scope = 'col';
+      th.textContent = label;
+      headRow.appendChild(th);
+    });
+    thead.appendChild(headRow);
+    barTable.appendChild(thead);
+
+    const xiamenIndex = rows.findIndex((row) => row.region === '厦门');
+    const tbody = document.createElement('tbody');
+    rows.forEach((row) => {
+      const tr = document.createElement('tr');
+      const city = document.createElement('th');
+      city.scope = 'row';
+      city.textContent = row.region;
+      const value = document.createElement('td');
+      value.textContent = metric.format(row[metricKey]);
+      const rank = document.createElement('td');
+      rank.textContent = row.region === '厦门' ? '第 ' + (xiamenIndex + 1) : '';
+      tr.append(city, value, rank);
+      tbody.appendChild(tr);
+    });
+    barTable.appendChild(tbody);
+  }
+
+  function renderLineChart() {
+    if (!lineChart) return;
+
+    if (!DATA) {
+      const fallback = document.getElementById('line-fallback');
+      if (fallback) fallback.hidden = false;
+      lineChart.hidden = true;
+      return;
+    }
+
+    lineChart.hidden = false;
+    const fallback = document.getElementById('line-fallback');
+    if (fallback) fallback.hidden = true;
+
+    const years = [2022, 2023, 2024];
+    const series = {
+      xiamen: years.map((year) => byYear(year, '厦门')),
+      fuzhou: years.map((year) => byYear(year, '福州')),
+    };
+    const values = years
+      .flatMap((year) => [byYear(year, '厦门').gdpPerCapita, byYear(year, '福州').gdpPerCapita])
+      .filter((value) => typeof value === 'number');
+
+    const min = Math.floor((Math.min(...values) - 3000) / 1000) * 1000;
+    const max = Math.ceil((Math.max(...values) + 3000) / 1000) * 1000;
+    const width = 720;
+    const height = 430;
+    const pad = { top: 32, right: 28, bottom: 46, left: 74 };
+    const plotW = width - pad.left - pad.right;
+    const plotH = height - pad.top - pad.bottom;
+    const x = (index) => pad.left + (plotW / (years.length - 1)) * index;
+    const y = (value) => pad.top + plotH - ((value - min) / (max - min)) * plotH;
+
+    const ticks = [min, min + (max - min) / 3, min + ((max - min) * 2) / 3, max];
+    const parts = [];
+
+    ticks.forEach((tick) => {
+      const tickY = y(tick).toFixed(1);
+      parts.push(`<line class="chart-grid-line" x1="${pad.left}" y1="${tickY}" x2="${width - pad.right}" y2="${tickY}"></line>`);
+      parts.push(`<text class="chart-axis-label" x="${pad.left - 12}" y="${tickY}" text-anchor="end" dominant-baseline="middle">${Math.round(tick).toLocaleString('en-US')}</text>`);
+    });
+
+    years.forEach((year, index) => {
+      parts.push(`<text class="chart-axis-label" x="${x(index).toFixed(1)}" y="${height - 14}" text-anchor="middle">${year}</text>`);
+    });
+
+    function lineFor(key, colorClass) {
+      const points = series[key]
+        .map((row, index) => `${x(index).toFixed(1)},${y(row.gdpPerCapita).toFixed(1)}`)
+        .join(' ');
+      return `<polyline class="chart-line ${colorClass}" points="${points}"></polyline>`;
+    }
+
+    parts.push(lineFor('xiamen', 'is-xiamen'));
+    parts.push(lineFor('fuzhou', 'is-fuzhou'));
+
+    years.forEach((year, index) => {
+      const xm = series.xiamen[index];
+      const fz = series.fuzhou[index];
+      parts.push(`<circle class="chart-dot is-xiamen" cx="${x(index).toFixed(1)}" cy="${y(xm.gdpPerCapita).toFixed(1)}" r="5"></circle>`);
+      parts.push(`<circle class="chart-dot is-fuzhou" cx="${x(index).toFixed(1)}" cy="${y(fz.gdpPerCapita).toFixed(1)}" r="5"></circle>`);
+      parts.push(`<text class="chart-value-label is-xiamen" x="${x(index).toFixed(1)}" y="${(y(xm.gdpPerCapita) - 18).toFixed(1)}" text-anchor="middle">${xm.gdpPerCapita.toLocaleString('en-US')}</text>`);
+      parts.push(`<text class="chart-value-label is-fuzhou" x="${x(index).toFixed(1)}" y="${(y(fz.gdpPerCapita) + 28).toFixed(1)}" text-anchor="middle">${fz.gdpPerCapita.toLocaleString('en-US')}</text>`);
+    });
+
+    parts.push(`<text class="chart-series-label is-xiamen" x="${pad.left}" y="${pad.top - 12}">厦门</text>`);
+    parts.push(`<text class="chart-series-label is-fuzhou" x="${pad.left + 48}" y="${pad.top - 12}">福州</text>`);
+
+    lineChart.innerHTML = parts.join('');
+    renderLineTable(years, series);
+  }
+
+  function drawLineChart() {
+    if (!lineChart || !DATA || reduceMotion) return;
+    const lines = lineChart.querySelectorAll('.chart-line');
+    lines.forEach((line) => {
+      const length = line.getTotalLength();
+      line.style.strokeDasharray = String(length);
+      line.style.strokeDashoffset = String(length);
+    });
+    window.requestAnimationFrame(() => {
+      lines.forEach((line) => {
+        line.style.transition = 'stroke-dashoffset 700ms cubic-bezier(.22,.61,.36,1)';
+        line.style.strokeDashoffset = '0';
+      });
+    });
+  }
+
+  function initLineDraw() {
+    if (!lineChart || !DATA || reduceMotion) return;
+    const chapter = document.getElementById('chapter-2');
+    if (!chapter || !('IntersectionObserver' in window)) {
+      drawLineChart();
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      drawLineChart();
+      observer.disconnect();
+    }, { threshold: 0.2 });
+
+    observer.observe(chapter);
+  }
+
+  function renderLineTable(years, series) {
+    if (!lineTable) return;
+    lineTable.innerHTML = '';
+    const caption = document.createElement('caption');
+    caption.textContent = '厦门与福州人均 GDP';
+    lineTable.appendChild(caption);
+
+    const thead = document.createElement('thead');
+    const headRow = document.createElement('tr');
+    ['年份', '厦门（元）', '福州（元）'].forEach((label) => {
+      const th = document.createElement('th');
+      th.scope = 'col';
+      th.textContent = label;
+      headRow.appendChild(th);
+    });
+    thead.appendChild(headRow);
+    lineTable.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+    years.forEach((year, index) => {
+      const tr = document.createElement('tr');
+      const yearCell = document.createElement('th');
+      yearCell.scope = 'row';
+      yearCell.textContent = String(year);
+      const xm = document.createElement('td');
+      xm.textContent = series.xiamen[index].gdpPerCapita.toLocaleString('en-US');
+      const fz = document.createElement('td');
+      fz.textContent = series.fuzhou[index].gdpPerCapita.toLocaleString('en-US');
+      tr.append(yearCell, xm, fz);
+      tbody.appendChild(tr);
+    });
+    lineTable.appendChild(tbody);
+  }
+
+  function initMetricTabs() {
+    if (!metricTabs.length) return;
+    metricTabs.forEach((button) => {
+      button.addEventListener('click', () => renderBars(button.dataset.metricTab));
+    });
+  }
+
+  function initSteps() {
+    if (!('IntersectionObserver' in window) || reduceMotion) return;
+    if (window.matchMedia('(max-width: 900px)').matches) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const step = entry.target;
+        if (step.dataset.metric) renderBars(step.dataset.metric);
+        if (step.dataset.year) {
+          yearSteps.forEach((item) => item.classList.toggle('is-active', item === step));
+        }
+      });
+    }, { threshold: 0.55 });
+
+    metricSteps.forEach((step) => observer.observe(step));
+    yearSteps.forEach((step) => observer.observe(step));
+  }
+
+  function initProgress() {
+    const bar = document.getElementById('read-progress');
+    const rail = document.querySelector('.chapter-rail');
+    const chapters = [...document.querySelectorAll('section[data-chapter]')];
+    const railLinks = [...document.querySelectorAll('.chapter-rail a')];
+    if (!bar) return;
+
+    let ticking = false;
+
+    function updateProgress() {
+      const docEl = document.documentElement;
+      const max = docEl.scrollHeight - window.innerHeight;
+      const ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      bar.style.transform = 'scaleX(' + ratio + ')';
+      if (rail) rail.classList.toggle('is-visible', window.scrollY > 420);
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateProgress);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', updateProgress, { passive: true });
+    updateProgress();
+
+    if (!('IntersectionObserver' in window)) return;
+    const chapterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        railLinks.forEach((link) => link.classList.toggle('is-active', link.dataset.chapter === id));
+      });
+    }, { rootMargin: '-30% 0px -55% 0px', threshold: 0.01 });
+    chapters.forEach((chapter) => chapterObserver.observe(chapter));
+  }
+
+  renderBars('population');
+  renderLineChart();
+  initMetricTabs();
+  initSteps();
+  initLineDraw();
+  initProgress();
+})();
+</script>
+</body>
+</html>

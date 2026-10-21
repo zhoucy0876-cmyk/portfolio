@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>厦门：人口第三，城镇化率第一</title>
+<style>
+  :root{
+    --ink:#15171c; --ink2:#3d434f; --muted:#7a8393;
+    --rule:#e6e8ec; --canvas:#f7f6f3; --paper:#fff;
+    --accent:#c0392b; --accent2:#e07a6d; --neutral:#c3ccd8;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--canvas); color:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  article{max-width:760px;margin:0 auto;padding:56px 24px 80px}
+  .kicker{
+    font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600;
+    text-transform:uppercase;margin:0 0 18px;
+  }
+  h1{
+    font-family:"Songti SC","Noto Serif SC",Serif;
+    font-size:42px;line-height:1.25;letter-spacing:-.01em;margin:0 0 22px;font-weight:700;
+  }
+  .lede{font-size:17px;line-height:1.85;color:var(--ink2);margin:0 0 40px}
+  .lede b{color:var(--ink);font-weight:600}
+
+  .figures{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);
+    border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:0 0 56px}
+  .fig{background:var(--paper);padding:20px 18px}
+  .fig .num{font-size:27px;font-weight:700;letter-spacing:-.02em;line-height:1.2}
+  .fig .num span{font-size:14px;font-weight:500;color:var(--muted);margin-left:3px}
+  .fig .lab{font-size:12.5px;color:var(--muted);margin-top:7px;line-height:1.5}
+  .fig .lab .yr{color:var(--ink2);font-weight:600}
+  .fig .rank{display:inline-block;margin-top:9px;font-size:11.5px;font-weight:600;
+    color:var(--accent);background:#fbeceb;border-radius:4px;padding:2px 7px}
+  .fig .rank.other{color:var(--muted);background:#f0f2f5}
+
+  h2{font-size:21px;margin:0 0 6px;letter-spacing:-.01em;font-weight:700}
+  h2 .idx{color:var(--accent);margin-right:8px;font-weight:700}
+  section{margin:0 0 52px}
+  .sub{font-size:14.5px;color:var(--muted);line-height:1.75;margin:0 0 20px}
+
+  .switch{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+  .switch button{
+    font:inherit;font-size:13px;padding:6px 14px;border-radius:999px;cursor:pointer;
+    border:1px solid var(--rule);background:var(--paper);color:var(--ink2);transition:.15s;
+  }
+  .switch button:hover{border-color:var(--neutral)}
+  .switch button.on{background:var(--ink);border-color:var(--ink);color:#fff;font-weight:600}
+
+  .chart{width:100%;background:var(--paper);border:1px solid var(--rule);
+    border-radius:10px;padding:14px 6px 6px}
+  .chart.tall{height:430px}
+  .chart.mid{height:360px}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .duo .chart{height:330px}
+  .duo h3{font-size:14px;margin:0 0 8px;color:var(--ink2);font-weight:600}
+
+  .note{font-size:13px;color:var(--muted);line-height:1.75;margin:14px 0 0}
+  .note b{color:var(--ink2);font-weight:600}
+
+  /* 第三节末尾：假设—检验分析 */
+  .explain{margin-top:46px;padding-top:30px;border-top:1px solid var(--rule)}
+  .explain h3{font-size:19px;margin:0 0 16px;letter-spacing:-.01em}
+  .explain p{font-size:15px;line-height:1.9;color:var(--ink2);margin:0 0 16px;max-width:40em}
+  .explain p:last-child{margin-bottom:0}
+  .explain .caveat{border-left:2px solid var(--rule);padding-left:16px}
+  .explain .source{font-size:12.5px;line-height:1.8;color:var(--muted)}
+  .table-wrap{overflow-x:auto;margin:20px 0 24px}
+  table.hypo{width:100%;min-width:660px;border-collapse:collapse;font-size:13px;line-height:1.7}
+  table.hypo th{text-align:left;font-weight:700;color:var(--ink2);padding:9px 12px;border-bottom:1px solid var(--ink2);white-space:nowrap}
+  table.hypo td{padding:11px 12px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink2)}
+  table.hypo td:first-child{width:24%;color:var(--ink);font-weight:600}
+  table.hypo td:last-child{width:26%}
+  table.hypo .v{font-weight:700}
+  table.hypo .v-no{color:var(--accent)}
+  table.hypo .v-na{color:var(--muted)}
+
+  footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--rule);
+    font-size:13px;color:var(--muted);line-height:1.9}
+  footer h2{font-size:20px;margin:0 0 6px}
+  footer h3{font-size:14px;font-weight:700;color:var(--ink2);margin:26px 0 9px;letter-spacing:.01em}
+  footer ul{margin:0;padding-left:1.1em}
+  footer ul li{margin:0 0 7px}
+  footer p{margin:0;max-width:42em}
+  footer b{color:var(--ink2)}
+  footer a{color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--rule)}
+  footer a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  footer code{background:#f0f2f5;padding:1px 5px;border-radius:3px;font-size:12px}
+  footer .colophon{margin-top:26px;font-size:12.5px}
+
+  @media (max-width:640px){
+    article{padding:36px 18px 60px}
+    h1{font-size:30px}
+    .lede{font-size:15.5px}
+    .figures{grid-template-columns:1fr}
+    .duo{grid-template-columns:1fr}
+    .duo .chart{height:300px}
+  }
+</style>
+</head>
+<body>
+<article>
+
+  <p class="kicker">福建统计年鉴 · 2022–2025</p>
+  <h1>厦门：人口只排第三，<br>但城镇化率是全省第一</h1>
+
+  <p class="lede">
+    2024 年末，福建全省住着 <b>4193 万人</b>。厦门占其中 <b>535 万</b>，排在泉州（891 万）和福州（850 万）之后，只是全省第三。
+    但把尺子换一下，厦门立刻变成第一：<b>91.0%</b> 的人口住在城镇，比第二名福州高出 16.7 个百分点；
+    是全省唯一超过 90% 的城市。下面的图，说的就是这件事。
+  </p>
+  <p class="lede">
+    2025 年的数字陆续公布后，已发布的数据没有改变这个判断：厦门年末常住人口 <b>536.50 万</b>、城镇化率 <b>91.31%</b>、
+    地区生产总值 <b>8980.37 亿元</b>，城镇化率在已发布数据的城市中仍然排第一。
+    但泉州 2025 年的常住人口官方尚未发布，所以这一年的横向比较只有八个市——缺的那一个，我没有用推算值补。
+    <br><span style="color:var(--muted);font-size:15px">（顺带说一句反直觉的：厦门人均 GDP 只在 2022 年当过全省第一，
+    2023 年起一直排在福州之后。）</span>
+  </p>
+
+  <div class="figures">
+    <div class="fig">
+      <div class="num" id="f1">—<span>万人</span></div>
+      <div class="lab" id="f1l">年末常住人口</div>
+      <div class="rank other" id="f1r">全省第 —</div>
+    </div>
+    <div class="fig">
+      <div class="num" id="f2">—<span>%</span></div>
+      <div class="lab" id="f2l">常住人口城镇化率</div>
+      <div class="rank" id="f2r">全省第 —</div>
+    </div>
+    <div class="fig">
+      <div class="num" id="f3">—<span>元</span></div>
+      <div class="lab" id="f3l">人均地区生产总值</div>
+      <div class="rank" id="f3r">全省第 —</div>
+    </div>
+  </div>
+
+  <div class="switch" id="yearSwitch" style="margin:-28px 0 44px">
+    <button data-year="2022">2022</button>
+    <button data-year="2023">2023</button>
+    <button data-year="2024">2024</button>
+    <button data-year="2025" class="on">2025</button>
+  </div>
+
+  <section>
+    <h2><span class="idx">一</span>各设区市之中，厦门站在什么位置</h2>
+    <p class="sub">切换指标，看厦门在福建各设区市里的排名如何翻转。</p>
+    <div class="switch" id="metricSwitch">
+      <button data-metric="urbanization" class="on">城镇化率</button>
+      <button data-metric="population">常住人口</button>
+      <button data-metric="gdpPerCapita">人均 GDP</button>
+      <button data-metric="gdp">GDP 总量</button>
+    </div>
+    <div class="chart tall" id="chart1"></div>
+    <p class="note" id="note1"></p>
+  </section>
+
+  <section>
+    <h2><span class="idx">二</span>人均 GDP：被福州反超，差距还在拉大</h2>
+    <p class="sub">厦门、福州、泉州三座城市的三年赛跑。</p>
+    <div class="chart mid" id="chart2"></div>
+    <p class="note" id="note2"></p>
+  </section>
+
+  <section>
+    <h2><span class="idx">三</span>厦门 vs 福州：生产端与分配端</h2>
+    <p class="sub">人均 GDP 看的是「创造」，居民收入看的是「拿到」。这两把尺子给出相反的答案。</p>
+    <div class="chart tall" id="chart5"></div>
+    <p class="note" id="note5"></p>
+    <div class="duo">
+      <div>
+        <h3>城镇居民人均可支配收入（元）</h3>
+        <div class="chart" id="chart6"></div>
+      </div>
+      <div>
+        <h3>农村居民人均可支配收入（元）</h3>
+        <div class="chart" id="chart7"></div>
+      </div>
+    </div>
+    <p class="note" id="note6"></p>
+
+    <div class="explain">
+      <h3>为什么会这样</h3>
+      <p>同一个城市群，人均 GDP 把福州排前面，居民收入把厦门排前面。这个反差不是数据打架，而是两把尺子量的不是同一件事。下面五种常见解释，逐个用本页数据检验。</p>
+
+      <div class="table-wrap">
+        <table class="hypo">
+          <thead>
+            <tr><th>常见解释</th><th>数据检验</th><th>判断</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>① 福州人均 GDP 更高，收入自然更高</td>
+              <td>2024 年人均 GDP 福州 167,787 元、厦门 160,888 元（福州高 <span class="ex-gdp">—</span>%）；2025 年城镇居民收入却是厦门高 <span class="ex-du">—</span>%</td>
+              <td class="v v-no">不成立——GDP 与居民收入是两个概念</td>
+            </tr>
+            <tr>
+              <td>② 福州县域多、乡村人口拉低平均</td>
+              <td>城镇内部厦门高 <span class="ex-du">—</span>%、农村内部高 <span class="ex-dr">—</span>%；2025 年收入总差中，结构贡献 <span class="ex-comp">—</span>%、同类群体内部差异 <span class="ex-lvl">—</span>%</td>
+              <td class="v">部分成立——只解释约三分之一</td>
+            </tr>
+            <tr>
+              <td>③ 厦门服务业占比高，工资更高</td>
+              <td>2025 年第三产业占比 <span class="ex-tert-x">—</span>% 对 <span class="ex-tert-f">—</span>%，只差 <span class="ex-tert-gap">—</span> 个百分点；第一产业 <span class="ex-prim-x">—</span>% 对 <span class="ex-prim-f">—</span>%</td>
+              <td class="v v-na">方向可能对，但幅度不足以单独解释；缺分行业工资数据</td>
+            </tr>
+            <tr>
+              <td>④ 特区与省会体制造成差距</td>
+              <td>厦门 1980 年设经济特区、1988 年计划单列、1994 年升副省级；福州为省会，农村人口占 <span class="ex-rural">—</span>%</td>
+              <td class="v v-na">背景相符，但本页数据无法检验因果</td>
+            </tr>
+            <tr>
+              <td>⑤ 厦门收入高，所以更富裕</td>
+              <td>收入为名义值，未扣住房与生活成本；两市的房价与物价没有纳入本页</td>
+              <td class="v v-no">不能这样推断</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>人均 GDP 是「每人创造了多少」，其中包含固定资产折旧、生产税净额与企业营业盈余；居民可支配收入是「住户最终拿到了多少」。2024 年城镇居民收入占人均 GDP 的比例，厦门 <span class="ex-rx">—</span>%、福州 <span class="ex-rf">—</span>%——每创造 100 元产出，厦门居民手里多留下约 <span class="ex-ratio-gap">—</span> 元。这是分配结构的差异，不是生产能力高低的差异。</p>
+
+      <p>更关键的是，差距主要发生在「同类人内部」：即便城镇比城镇、农村比农村，厦门仍分别高 <span class="ex-du">—</span>% 和 <span class="ex-dr">—</span>%。把 2025 年的收入总差拆开，结构因素约占 <span class="ex-comp">—</span>%、同类群体内部约占 <span class="ex-lvl">—</span>%，而且四年里结构项始终稳定在 33–34%。城镇化能解释三分之一，剩下三分之二要看工资水平、行业结构，以及两市生活成本的差异。</p>
+
+      <p class="caveat"><b>这段分析能说明「差在哪」，不能证明「为什么」。</b>要坐实机制，还缺两市的分行业工资、就业结构、房价与物价；福州 2025 年统计公报也没有公布收入构成（厦门公布了），所以无法比较工资性、财产性收入的占比差异。另外，收入是名义值，厦门更高的名义收入不等于更高的实际生活水平。</p>
+
+      <p class="source">制度背景为公开资料整理的定性说明：厦门经济特区设立于 1980 年，1988 年实行计划单列，1994 年为副省级市；福州是福建省省会，县域人口比重高于厦门。制度差异只能解释「为什么可能不同」，不能代替上面的数据检验。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="idx">四</span>厦门内部：一座岛的两种密度</h2>
+    <p class="sub" id="duoSub">把厦门拆成六个区，人口和 GDP 的分布并不重合。</p>
+    <div class="duo" id="duo">
+      <div>
+        <h3 id="t3">常住人口（万人）</h3>
+        <div class="chart" id="chart3"></div>
+      </div>
+      <div>
+        <h3 id="t4">地区生产总值（亿元）</h3>
+        <div class="chart" id="chart4"></div>
+      </div>
+    </div>
+    <p class="note" id="note3"></p>
+  </section>
+
+  <section>
+    <h2><span class="idx">五</span>最新：2026 年上半年</h2>
+    <p class="sub">季度数据只有厦门市本级发布，没有分市口径，所以它单独放在这里。</p>
+    <p class="note">
+      <b>2026 年上半年</b>　厦门地区生产总值 <b>4469.26 亿元</b>，同比 <b>+5.0%</b>
+      （第一产业 10.42 亿元、第二产业 1590.18 亿元、第三产业 2868.66 亿元）。
+      全体居民人均可支配收入 42924 元，同比 +4.1%。
+      <br><b>提醒</b>　这是<b>半年累计数</b>，不能和上面的年度数字直接比较——4469 亿是半年，8980 亿是全年，放一起看会以为经济腰斩。
+    </p>
+  </section>
+
+  <footer>
+    <h2>数据来源与制作说明</h2>
+
+    <h3>来源</h3>
+    <ul>
+      <li><b>2022–2024 年</b>　福建省统计局《福建统计年鉴》2023、2024、2025 卷，第二十一篇「市县国民经济主要指标」的
+        表 21-4（年末常住人口数）与表 21-1（地区生产总值）。年鉴表格为图片，数字系逐格人工转录。</li>
+      <li><b>2025 年</b>　九个设区市各自的《2025 年国民经济和社会发展统计公报》。</li>
+      <li><b>三次产业与居民收入</b>　取自厦门、福州与全省的历年统计公报正文。其中厦门 2022、2023 年公报因官网当时不可达，
+        经官方转载渠道取得，并与《福建统计年鉴》21-1、21-5 表核对一致。</li>
+      <li><b>2026 年上半年</b>　厦门市统计局《2026 年 1—6 月全市主要经济指标快报》（数据为图片，人工转录）。</li>
+      <li><b>原始出处</b>　<a href="https://tjj.fujian.gov.cn/tongjinianjian/dz2025/zk/indexch.htm">福建统计年鉴在线版</a>　·　
+        <a href="http://tjj.xm.gov.cn/tjzl/ndgb/">厦门市统计局 · 统计公报</a>　·　
+        <a href="https://tjj.fuzhou.gov.cn/zwgk/tjzl/ndbg/">福州市统计局 · 统计公报</a></li>
+    </ul>
+
+    <h3>口径</h3>
+    <ul>
+      <li>常住人口为年末数；城镇化率 ＝ 城镇常住人口 ÷ 常住人口。</li>
+      <li>人均地区生产总值按<b>年平均常住人口</b>计算，因此不等于「GDP ÷ 年末人口」，两者相差约 0.2%。</li>
+      <li>居民收入统一采用城镇 / 农村居民人均可支配收入，不使用「全体居民」口径。</li>
+      <li>2026 年上半年是<b>半年累计数</b>，不与年度数字直接比较。</li>
+    </ul>
+
+    <h3>已知缺口</h3>
+    <ul>
+      <li><b>泉州 2025 年常住人口</b>　官方公报只发布户籍人口（773.49 万），常住人口未见发布，因此 2025 年这一行没有泉州。
+        第三方人口数据站的同一页面同样只能填出户籍人口，可互相印证。</li>
+      <li><b>厦门 2025 年各区人口</b>　公报公布了各区 GDP，但未公布各区常住人口，「厦门内部」一节因此回退到最近可得的 2024 年，
+        并在图题与图注中标明。</li>
+      <li><b>厦门、福州、泉州 2025 年人均 GDP</b>　三市公报均未印此指标，故留空；没有用「GDP ÷ 年末人口」推算，
+        以免与年鉴的年平均人口口径混用。</li>
+    </ul>
+
+    <h3>两处源数据瑕疵（按原样呈现，未作修正）</h3>
+    <ul>
+      <li>厦门六区 GDP 合计与全市的差额：2022 年 0.01 亿元、2023 年 20.01 亿元、2024 年 0.00 亿元。
+        <b>2023 年这 20 亿元是年鉴原文本身就存在的</b>，不是本页计算或转录造成的。</li>
+      <li>2022 年九市 GDP 合计比全省多 117.91 亿元（0.22%）。已用 2022 年福建省统计公报核对全省数字（53109.85 亿元）无误，
+        属各市初步核算数与全省独立核算之间的正常差异。</li>
+    </ul>
+
+    <h3>核对方式</h3>
+    <p>所有数字逐格比对过原始表格，并通过六重校验：城镇人口 ＋ 乡村人口 ＝ 常住人口；城镇化率 ＝ 城镇 ÷ 常住；
+      人均 GDP ≈ GDP ÷ 人口；<b>三次产业合计 ＝ GDP</b>；九市 GDP 合计 ≈ 全省；城镇收入 &gt; 农村收入。
+      校验脚本 <code>check-data.js</code> 放在项目根目录，可随时重跑。</p>
+
+    <p class="colophon">本页为原生 HTML / CSS / JavaScript，无构建步骤；图表用 ECharts，数据存放在 <code>data/</code> 下的 CSV 中。</p>
+  </footer>
+
+</article>
+
+<script src="vendor/echarts.min.js"></script>
+<script src="data.js"></script>
+<script>
+const ACCENT = '#c0392b', NEUTRAL = '#c3ccd8', INK = '#15171c', INK2 = '#3d434f', MUTED = '#7a8393';
+const XM = '厦门';
+const ISLAND_COLOR = { '岛内': '#c0392b', '岛外': '#9db0c6' };
+
+const METRICS = {
+  urbanization: {
+    label: '常住人口城镇化率', suffix: '%', decimals: 1,
+    value: d => d.urbanization,
+    note: y => `以 ${y} 年末计，厦门常住人口城镇化率 ${pick(y, XM).urbanization.toFixed(1)}%，是已发布数据的设区市中唯一超过 90% 的城市；全省为 ${pick(y, '全省').urbanization.toFixed(1)}%。`,
+  },
+  population: {
+    label: '年末常住人口', suffix: '万人', decimals: 2,
+    value: d => d.population,
+    note: y => `${y} 年末，泉州 ${pick(y, '泉州').population.toFixed(2)} 万、福州 ${pick(y, '福州').population.toFixed(2)} 万，厦门 ${pick(y, XM).population.toFixed(2)} 万，位居第三。`,
+  },
+  gdpPerCapita: {
+    label: '人均地区生产总值', suffix: '元', decimals: 0,
+    value: d => d.gdpPerCapita,
+    note: y => `${y} 年，厦门人均 GDP ${pick(y, XM).gdpPerCapita.toLocaleString('en-US')} 元，全省平均水平为 ${pick(y, '全省').gdpPerCapita.toLocaleString('en-US')} 元。`,
+  },
+  gdp: {
+    label: '地区生产总值', suffix: '亿元', decimals: 2,
+    value: d => d.gdp,
+    note: y => `${y} 年，福州 GDP ${pick(y, '福州').gdp.toFixed(2)} 亿元居首，泉州 ${pick(y, '泉州').gdp.toFixed(2)} 亿元次之，厦门 ${pick(y, XM).gdp.toFixed(2)} 亿元排第三。`,
+  },
+};
+
+const state = { year: 2025, metric: 'urbanization' };
+const charts = {};
+
+function pick(year, region) {
+  return DATA.cities.find(d => d.year === year && d.region === region);
+}
+function fmt(value, m) {
+  return m.decimals === 0
+    ? Math.round(value).toLocaleString('en-US')
+    : value.toFixed(m.decimals);
+}
+function baseAxisStyle() {
+  return { axisLine: { show: false }, axisTick: { show: false }, splitLine: { show: false } };
+}
+
+/* ---------- 图1：九市排名 ---------- */
+function renderChart1() {
+  const m = METRICS[state.metric];
+  const rows = DATA.cities
+    .filter(d => d.year === state.year && d.region !== '全省' && m.value(d) !== null)
+    .map(d => ({ name: d.region, value: m.value(d) }))
+    .sort((a, b) => a.value - b.value);
+
+  if (rows.length === 0) {
+    charts[1].clear();
+    document.getElementById('note1').innerHTML = `${state.year} 年这个指标没有已发布的数据。`;
+    return;
+  }
+
+  const province = pick(state.year, '全省');
+  const maxValue = rows[rows.length - 1].value;
+
+  charts[1].setOption({
+    grid: { left: 56, right: 96, top: 8, bottom: 8 },
+    xAxis: { type: 'value', show: false, max: maxValue * 1.2 },
+    yAxis: {
+      type: 'category',
+      data: rows.map(r => r.name),
+      ...baseAxisStyle(),
+      axisLabel: {
+        fontSize: 13.5, margin: 14,
+        formatter: name => (name === XM ? `{hi|${name}}` : `{lo|${name}}`),
+        rich: {
+          hi: { color: ACCENT, fontWeight: 700, fontSize: 13.5 },
+          lo: { color: INK2, fontWeight: 400, fontSize: 13.5 },
+        },
+      },
+    },
+    series: [{
+      type: 'bar',
+      barWidth: 17,
+      data: rows.map(r => ({
+        value: r.value,
+        itemStyle: { color: r.name === XM ? ACCENT : NEUTRAL, borderRadius: [0, 3, 3, 0] },
+        label: {
+          color: r.name === XM ? ACCENT : INK2,
+          fontWeight: r.name === XM ? 700 : 500,
+        },
+      })),
+      label: {
+        show: true, position: 'right', distance: 9, fontSize: 13,
+        formatter: p => fmt(p.value, m),
+      },
+      markLine: {
+        silent: true, symbol: 'none',
+        lineStyle: { color: MUTED, width: 1, type: 'dashed' },
+        label: { show: false },
+        data: [{ xAxis: m.value(province) }],
+      },
+    }],
+  }, true);
+
+  document.getElementById('note1').innerHTML =
+    `<b>${state.year} 年</b>　${m.note(state.year)}　图中虚线为全省水平。`;
+}
+
+/* ---------- 图2：人均 GDP 三年走势 ---------- */
+function renderChart2() {
+  const years = [2022, 2023, 2024];
+  const series = [
+    { name: XM, color: ACCENT, width: 3.2 },
+    { name: '福州', color: '#5a6473', width: 1.8 },
+    { name: '泉州', color: '#93a1b3', width: 1.8 },
+    { name: '全省', color: NEUTRAL, width: 1.8 },
+  ].map(s => ({
+    name: s.name,
+    type: 'line',
+    symbol: 'circle',
+    symbolSize: s.name === XM ? 8 : 6,
+    lineStyle: { width: s.width, color: s.color },
+    itemStyle: { color: s.color, borderWidth: 0 },
+    data: years.map(y => pick(y, s.name).gdpPerCapita),
+    label: s.name === XM ? {
+      show: true, position: 'top', color: ACCENT, fontSize: 12, fontWeight: 700,
+      formatter: p => Math.round(p.value).toLocaleString('en-US'),
+    } : { show: false },
+    endLabel: { show: true, formatter: s.name, color: s.color, fontSize: 12.5, fontWeight: 600 },
+  }));
+
+  charts[2].setOption({
+    grid: { left: 62, right: 62, top: 34, bottom: 34 },
+    tooltip: {
+      trigger: 'axis',
+      valueFormatter: v => Math.round(v).toLocaleString('en-US') + ' 元',
+    },
+    xAxis: { type: 'category', data: years, boundaryGap: true,
+      axisLine: { lineStyle: { color: '#e6e8ec' } }, axisTick: { show: false },
+      axisLabel: { color: MUTED, fontSize: 13 } },
+    yAxis: { type: 'value', scale: true,
+      axisLine: { show: false }, axisTick: { show: false },
+      splitLine: { lineStyle: { color: '#f0f2f5' } },
+      axisLabel: { color: MUTED, fontSize: 12, formatter: v => (v / 10000).toFixed(1) } },
+    series,
+  }, true);
+
+  const xm = years.map(y => pick(y, XM).gdpPerCapita);
+  const fz = years.map(y => pick(y, '福州').gdpPerCapita);
+  document.getElementById('note2').innerHTML =
+    `<b>看那条红线</b>　2022 年厦门人均 GDP ${xm[0].toLocaleString('en-US')} 元，比福州高 ${(xm[0] - fz[0]).toLocaleString('en-US')} 元，是全省第一；` +
+    `2023 年福州以 ${(fz[1] - xm[1]).toLocaleString('en-US')} 元的优势反超，2024 年把差距拉大到 ${(fz[2] - xm[2]).toLocaleString('en-US')} 元。` +
+    `厦门此后没有再拿回第一。` +
+    `<br><b>为什么线停在 2024</b>　厦门、福州、泉州的 2025 年统计公报都没有印人均 GDP，所以这条线暂时不往下延伸，` +
+    `而不是用推算值补上。`;
+}
+
+/* ---------- 图3 / 图4：厦门六区 ---------- */
+function renderDistrictCharts() {
+  // 分区数据只到 2024 年（2025 年公报公布了各区 GDP，但未公布各区人口）。
+  // 选到没有分区数据的年份时，回退显示最近可得的年份，并在图题与图注里标明。
+  // 只认人口与 GDP 都有的年份——这一节的两张图必须成对出现
+  const yearsWithData = [...new Set(
+    DATA.districts.filter((d) => d.population !== null && d.gdp !== null).map((d) => d.year)
+  )].sort((a, b) => b - a);
+  const shownYear = yearsWithData.includes(state.year) ? state.year : yearsWithData[0];
+  const rows = DATA.districts.filter((d) => d.year === shownYear);
+
+  document.getElementById('duo').style.display = '';
+  charts[3].resize();
+  charts[4].resize();
+  document.getElementById('t3').textContent = `常住人口（万人）　·　${shownYear} 年`;
+  document.getElementById('t4').textContent = `地区生产总值（亿元）　·　${shownYear} 年`;
+
+  const build = (key, unit, decimals) => {
+    const sorted = rows.map(d => ({ name: d.district, value: d[key], island: d.island }))
+      .sort((a, b) => a.value - b.value);
+    return {
+      grid: { left: 50, right: 52, top: 8, bottom: 8 },
+      xAxis: { type: 'value', show: false, max: sorted[sorted.length - 1].value * 1.22 },
+      yAxis: {
+        type: 'category', data: sorted.map(r => r.name),
+        ...baseAxisStyle(),
+        axisLabel: { fontSize: 12.5, margin: 12, color: INK2 },
+      },
+      series: [{
+        type: 'bar', barWidth: 15,
+        data: sorted.map(r => ({
+          value: r.value,
+          itemStyle: { color: ISLAND_COLOR[r.island], borderRadius: [0, 3, 3, 0] },
+        })),
+        label: {
+          show: true, position: 'right', distance: 8, fontSize: 12,
+          formatter: p => p.value.toFixed(decimals), color: INK2,
+        },
+      }],
+    };
+  };
+
+  charts[3].setOption(build('population', '万人', 2), true);
+  charts[4].setOption(build('gdp', '亿元', 1), true);
+
+  const pop = rows.reduce((a, d) => a + d.population, 0);
+  const innerPop = rows.filter(d => d.island === '岛内').reduce((a, d) => a + d.population, 0);
+  const gdp = rows.reduce((a, d) => a + d.gdp, 0);
+  const innerGdp = rows.filter(d => d.island === '岛内').reduce((a, d) => a + d.gdp, 0);
+
+  const islandNote =
+    `<b>${shownYear} 年</b>　岛内两区（思明、湖里）住了 ${innerPop.toFixed(2)} 万人，占全市 ${(innerPop / pop * 100).toFixed(1)}%；` +
+    `却贡献了 ${innerGdp.toFixed(2)} 亿元 GDP，占 ${(innerGdp / gdp * 100).toFixed(1)}%。` +
+    `红色为岛内，蓝色为岛外。把年份切换一下，看这条缝在变宽还是变窄。`;
+  document.getElementById('note3').innerHTML =
+    shownYear === state.year
+      ? islandNote
+      : `<b>${state.year} 年各区人口尚未发布</b>　厦门市统计公报公布了各区 GDP，但没有公布各区常住人口，两项缺一半，` +
+        `因此这里展示最近可得的 ${shownYear} 年。<br>${islandNote}`;
+}
+
+/* ---------- 图5：三次产业结构（厦门 vs 福州） ---------- */
+function renderIndustryChart() {
+  const y = state.year;
+  const rows = [XM, '福州']
+    .map((name) => pick(y, name))
+    .filter((d) => d && d.primary !== null && d.gdp !== null);
+  const el = document.getElementById('note5');
+
+  if (rows.length === 0) {
+    charts[5].clear();
+    el.innerHTML = `${y} 年：厦门和福州的产业结构数据都还没取到。`;
+    return;
+  }
+
+  const share = (d, key) => (d[key] / d.gdp) * 100;
+  const mk = (key) => rows.map((d) => share(d, key));
+
+  charts[5].setOption({
+    grid: { left: 48, right: 26, top: 44, bottom: 24 },
+    legend: { top: 0, left: 0, itemWidth: 10, itemHeight: 10, textStyle: { fontSize: 12, color: INK2 } },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { type: 'shadow' },
+      formatter: (ps) => {
+        const parts = ps.map((p) => `${p.seriesName} ${(+p.value).toFixed(1)}%`);
+        return `${ps[0].name}<br>${parts.join('<br>')}`;
+      },
+    },
+    xAxis: { type: 'value', max: 100, show: false },
+    yAxis: {
+      type: 'category',
+      data: rows.map((d) => d.region),
+      ...baseAxisStyle(),
+      axisLabel: {
+        fontSize: 13.5, margin: 12,
+        formatter: (n) => (n === XM ? `{hi|${n}}` : `{lo|${n}}`),
+        rich: { hi: { color: ACCENT, fontWeight: 700, fontSize: 13.5 }, lo: { color: INK2, fontSize: 13.5 } },
+      },
+    },
+    series: [
+      { name: '第一产业', type: 'bar', stack: 's', barWidth: 22, data: mk('primary'), itemStyle: { color: '#cdd7e0' } },
+      { name: '第二产业', type: 'bar', stack: 's', barWidth: 22, data: mk('secondary'), itemStyle: { color: '#8b9bab' } },
+      {
+        name: '第三产业', type: 'bar', stack: 's', barWidth: 22, data: mk('tertiary'),
+        itemStyle: { color: ACCENT, borderRadius: [0, 3, 3, 0] },
+        label: { show: true, position: 'inside', color: '#fff', fontSize: 11, formatter: (p) => `${(+p.value).toFixed(1)}%` },
+      },
+    ],
+  }, true);
+
+  if (rows.length === 2) {
+    const [xm, fz] = rows[0].region === XM ? rows : [rows[1], rows[0]];
+    el.innerHTML =
+      `${y} 年，厦门三次产业结构为 ${share(xm, 'primary').toFixed(1)}∶${share(xm, 'secondary').toFixed(1)}∶${share(xm, 'tertiary').toFixed(1)}——第一产业几乎为零；` +
+      `福州为 ${share(fz, 'primary').toFixed(1)}∶${share(fz, 'secondary').toFixed(1)}∶${share(fz, 'tertiary').toFixed(1)}，农业与县域经济仍有体量。` +
+      `服务业占比高的城市，就业更多集中在工资更高的行业。`;
+  } else {
+    el.innerHTML = `${y} 年只有 ${rows.map((r) => r.region).join('、')}一个城市有产业结构数据（另一个尚未取到）。`;
+  }
+}
+
+/* ---------- 图6/图7：居民收入走势 ---------- */
+function renderIncomeCharts() {
+  const years = [2022, 2023, 2024, 2025];
+  const lineStyle = {
+    [XM]: { color: ACCENT, width: 3 },
+    '福州': { color: '#5a6473', width: 1.8 },
+    '全省': { color: NEUTRAL, width: 1.8 },
+  };
+  const make = (key) => [XM, '福州', '全省'].map((name) => ({
+    name,
+    type: 'line',
+    symbol: 'circle',
+    symbolSize: name === XM ? 8 : 6,
+    lineStyle: lineStyle[name],
+    itemStyle: { color: lineStyle[name].color },
+    data: years.map((y) => {
+      const d = pick(y, name);
+      return d && d[key] !== null ? d[key] : null;
+    }),
+    connectNulls: false,
+    endLabel: { show: true, formatter: name, color: lineStyle[name].color, fontSize: 12.5, fontWeight: 600 },
+  }));
+
+  const xAxis = {
+    type: 'category', data: years, boundaryGap: true,
+    axisLine: { lineStyle: { color: '#e6e8ec' } }, axisTick: { show: false },
+    axisLabel: { color: MUTED, fontSize: 12 },
+  };
+  const yAxis = {
+    type: 'value', scale: true,
+    axisLine: { show: false }, axisTick: { show: false },
+    splitLine: { lineStyle: { color: '#f0f2f5' } },
+    axisLabel: { color: MUTED, fontSize: 11, formatter: (v) => (v / 1000).toFixed(1) + 'k' },
+  };
+  const tooltip = { trigger: 'axis', valueFormatter: (v) => v.toLocaleString('en-US') + ' 元' };
+
+  charts[6].setOption({ grid: { left: 52, right: 58, top: 34, bottom: 30 }, tooltip, xAxis, yAxis, series: make('urbanIncome') }, true);
+  charts[7].setOption({ grid: { left: 52, right: 58, top: 34, bottom: 30 }, tooltip, xAxis, yAxis, series: make('ruralIncome') }, true);
+
+  const latest = [...years].reverse().find((y) => {
+    const d = pick(y, XM);
+    return d && d.urbanIncome !== null;
+  });
+  if (latest) {
+    const xm = pick(latest, XM);
+    const fz = pick(latest, '福州');
+    const du = ((xm.urbanIncome / fz.urbanIncome) - 1) * 100;
+    const dr = ((xm.ruralIncome / fz.ruralIncome) - 1) * 100;
+    document.getElementById('note6').innerHTML =
+      `${latest} 年，厦门城镇居民人均可支配收入 ${xm.urbanIncome.toLocaleString('en-US')} 元，比福州高 ${du.toFixed(1)}%；` +
+      `农村 ${xm.ruralIncome.toLocaleString('en-US')} 元，高 ${dr.toFixed(1)}%。全省平均作为参照线放在中间。`;
+  }
+
+}
+
+/* ---------- 第三节的假设—检验分析：动态数字注入 ---------- */
+function renderExplain() {
+  const x25 = pick(2025, XM), f25 = pick(2025, '福州');
+  const x24 = pick(2024, XM), f24 = pick(2024, '福州');
+
+  // 收入总差 = 城乡结构贡献 + 同类群体内部贡献
+  const wx = x25.urbanization / 100, wf = f25.urbanization / 100;
+  const xAvg = wx * x25.urbanIncome + (1 - wx) * x25.ruralIncome;
+  const fAvg = wf * f25.urbanIncome + (1 - wf) * f25.ruralIncome;
+  const xAtF = wf * x25.urbanIncome + (1 - wf) * x25.ruralIncome;
+  const comp = (xAvg - xAtF) / (xAvg - fAvg) * 100;
+
+  const tertX = (x25.tertiary / x25.gdp) * 100;
+  const tertF = (f25.tertiary / f25.gdp) * 100;
+  const rx = (x24.urbanIncome / x24.gdpPerCapita) * 100;
+  const rf = (f24.urbanIncome / f24.gdpPerCapita) * 100;
+
+  const values = {
+    'ex-du': ((x25.urbanIncome / f25.urbanIncome) - 1) * 100,
+    'ex-dr': ((x25.ruralIncome / f25.ruralIncome) - 1) * 100,
+    'ex-gdp': ((f24.gdpPerCapita / x24.gdpPerCapita) - 1) * 100,
+    'ex-comp': comp,
+    'ex-lvl': 100 - comp,
+    'ex-rx': rx,
+    'ex-rf': rf,
+    'ex-ratio-gap': rx - rf,
+    'ex-tert-x': tertX,
+    'ex-tert-f': tertF,
+    'ex-tert-gap': tertX - tertF,
+    'ex-prim-x': (x25.primary / x25.gdp) * 100,
+    'ex-prim-f': (f25.primary / f25.gdp) * 100,
+    'ex-rural': 100 - f25.urbanization,
+  };
+  Object.entries(values).forEach(([cls, v]) => {
+    document.querySelectorAll('.' + cls).forEach((el) => {
+      el.textContent = v.toFixed(1);
+    });
+  });
+}
+
+/* ---------- 数字卡片 ---------- */
+function renderFigures() {
+  // 每个指标各自取"最新已发布"的年份——2025 年缺人均 GDP，就退回 2024 年并在卡片上标明。
+  const cards = [
+    { key: 'population', id: 'f1', labelId: 'f1l', rankId: 'f1r', name: '年末常住人口', unit: '万人', digits: 2 },
+    { key: 'urbanization', id: 'f2', labelId: 'f2l', rankId: 'f2r', name: '常住人口城镇化率', unit: '%', digits: 1 },
+    { key: 'gdpPerCapita', id: 'f3', labelId: 'f3l', rankId: 'f3r', name: '人均地区生产总值', unit: '元', digits: 0 },
+  ];
+  cards.forEach((c) => {
+    const mine = DATA.cities
+      .filter((d) => d.region === XM && d[c.key] !== null)
+      .sort((a, b) => b.year - a.year)[0];
+    const peers = DATA.cities.filter(
+      (d) => d.year === mine.year && d.region !== '全省' && d[c.key] !== null
+    );
+    const rank = peers.slice().sort((a, b) => b[c.key] - a[c.key])
+      .findIndex((d) => d.region === XM) + 1;
+
+    const shown = c.digits === 0
+      ? Math.round(mine[c.key]).toLocaleString('en-US')
+      : mine[c.key].toFixed(c.digits);
+    document.getElementById(c.id).innerHTML = `${shown}<span>${c.unit}</span>`;
+    document.getElementById(c.labelId).innerHTML =
+      `${c.name}　<span class="yr">${mine.year} 年</span>`;
+
+    const el = document.getElementById(c.rankId);
+    el.textContent = peers.length < 9 ? `八市中第 ${rank}` : `全省第 ${rank}`;
+    el.className = 'rank' + (rank === 1 ? '' : ' other');
+  });
+}
+
+/* ---------- 初始化 ---------- */
+function boot() {
+  ['chart1', 'chart2', 'chart3', 'chart4', 'chart5', 'chart6', 'chart7'].forEach((id, i) => {
+    charts[i + 1] = echarts.init(document.getElementById(id));
+  });
+
+  document.getElementById('metricSwitch').addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    state.metric = btn.dataset.metric;
+    [...e.currentTarget.children].forEach(b => b.classList.toggle('on', b === btn));
+    renderChart1();
+  });
+
+  document.getElementById('yearSwitch').addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    state.year = Number(btn.dataset.year);
+    [...e.currentTarget.children].forEach(b => b.classList.toggle('on', b === btn));
+    renderChart1();
+    renderIndustryChart();
+    renderDistrictCharts();
+  });
+
+  renderFigures();
+  renderChart1();
+  renderChart2();
+  renderIndustryChart();
+  renderIncomeCharts();
+  renderExplain();
+  renderDistrictCharts();
+  window.addEventListener('resize', () => Object.values(charts).forEach(c => c.resize()));
+}
+
+boot();
+</script>
+</body>
+</html>
